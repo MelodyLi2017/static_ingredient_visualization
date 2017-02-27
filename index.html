@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>INFO 3300 - Data-driven Web Applications</title>
+<link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans" rel\
+="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+<style>
+body { font-family: 'Alegreya Sans', Calibri, sans-serif; }
+svg { border: solid #ccc 1px; }
+</style>
+</head>
+<body>
+
+<!-- Here's an SVG element. Note that in this file it looks like the <div> above. -->
+<svg height="400" width="200">
+  <!-- Visual elements are represented by tags, which have attributes -->
+</svg>
+
+<script id="notes">
+	//import cuisines.csv
+	d3.text("cuisines.csv", function(error, data){
+		data = d3.csvParseRows(data, function(row) {
+			var ingredients = [];
+			for (var i = 1; i < row.length; i++) {
+				ingredients.push(row[i]);
+				if (row[i+1] === '') { break;}
+			}
+			return {
+				cuisine: row[0],
+				ingredients: ingredients
+			};
+		});
+
+		var numberOfCuisinesByType = countByCuisineType(data);
+
+		for (var cuisineType in numberOfCuisinesByType) {
+			var cuisineTypeCount = numberOfCuisinesByType[cuisineType];
+			var countedIngredients = countIngredients(filterByCuisineType(data, cuisineType));
+
+			console.log(cuisineType + ": " + cuisineTypeCount);
+			console.log(convertObjValuesToPercentages(countedIngredients, cuisineTypeCount));
+		}
+
+	});
+
+	function countByCuisineType (data) {
+		// initilize cuisineTypeIndex object to store cuisineType count
+		cuisineTypeIndex = {};
+
+		// Checks if the cuisineType exists in the cuisineTypeIndex object
+		// If not, it will set the cuisineType count to 1
+		// Otherwise, it will add 1 to the count
+		data.forEach(function(row){
+			if(cuisineTypeIndex[row['cuisine']] === undefined) {
+				cuisineTypeIndex[row['cuisine']] = 1;
+			} else {
+				cuisineTypeIndex[row['cuisine']] += 1;
+			}
+		})
+
+		return cuisineTypeIndex;
+	}
+
+	function filterByCuisineType (data, type) {
+		// Checks if object key "cuisine" matches filtered specified type
+		// Returns array of recipe objects filtered by specified type
+		return data.filter(function(row) {
+			return row['cuisine'] === type;
+		});
+	}
+
+	function countIngredients (data) {
+		// initilize ingredientsIndex object to store ingredient count
+		var ingredientsIndex = {};
+
+		// Checks if the ingredient exists in the ingredientsIndex object
+		// If not, it will set the ingredient count to 1
+		// Otherwise, it will add 1 to the count
+		for (var i = 0; i < data.length; i++) {
+			data[i].ingredients.forEach(function(ingredient) {
+				if(ingredientsIndex[ingredient] === undefined) {
+					ingredientsIndex[ingredient] = 1;
+				} else {
+					ingredientsIndex[ingredient] += 1;
+				}
+			})
+		}
+
+		// return ingredientsIndex after ingredient count sorted by descending order
+		return sortObjectValuesByDescendingOrder(ingredientsIndex);
+	}
+
+	function sortObjectValuesByDescendingOrder(obj) {
+		var sortedObj = {};
+		var sortable = [];
+
+	  for (var key in obj) {
+	    sortable.push([key, obj[key]]);
+	  }
+
+	  sortable.sort(function(a, b) {
+	    return b[1] - a[1];
+	  });
+
+		for (var i = 0; i < 8; i++) {
+			sortedObj[sortable[i][0]] = sortable[i][1];
+		}
+
+		// sortable.forEach(function(item) {
+	  //   sortedObj[item[0]] = item[1];
+	  // });
+
+		return sortedObj;
+	}
+
+	function convertObjValuesToPercentages (obj, total) {
+		for (var key in obj) {
+	    obj[key] = obj[key] / total;
+	  }
+		return obj;
+	}
+</script>
+
+<!-- This block will be automatically filled with syntax-highlighted code from the script below -->
+<pre><code id="display">
+</code></pre>
+
+
+<script>
+document.getElementById("display").innerText = document.getElementById("notes").innerText;
+hljs.initHighlightingOnLoad();
+</script>
+
+
+</body>
+</html>
