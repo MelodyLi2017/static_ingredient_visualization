@@ -23,6 +23,7 @@ svg { border: solid #ccc 1px; }
 	d3.text("cuisines.csv", function(error, data){
 		rawData = d3.csvParseRows(data, function(row) {
 			var ingredients = [];
+			// Filter out ingredient columns that are undefined
 			for (var i = 1; i < row.length; i++) {
 				ingredients.push(row[i]);
 				if (row[i+1] === '') { break;}
@@ -33,37 +34,48 @@ svg { border: solid #ccc 1px; }
 			};
 		});
 
-		var cuisineTypesByCount = countByCuisineType(rawData);
-
 		var processedData = [];
-		topIngredientsIndex = [];
+		var topIngredientsIndex = [];
 
+		var cuisineTypesByCount = countByCuisineType(rawData);
 		for (var cuisineType in cuisineTypesByCount) {
 			var cuisineTypeCount = cuisineTypesByCount[cuisineType];
 			var ingredientsByCount = countIngredients(filterByCuisineType(rawData, cuisineType));
 			var ingredientsByPercentage = convertObjValuesToPercentages(ingredientsByCount, cuisineTypeCount);
-			processedData.push({cuisineType: cuisineType, totalNumberOfRecipes:cuisineTypeCount, ingredientsByCount:ingredientsByCount, ingredientsByPercentage:ingredientsByPercentage});
 
-			returnFirstTenKeys (ingredientsByCount, topIngredientsIndex)
+			processedData.push({
+				cuisineType: cuisineType,
+				totalNumberOfRecipes:cuisineTypeCount,
+				ingredientsByCount:ingredientsByCount,
+				ingredientsByPercentage:ingredientsByPercentage
+			});
+
+			returnFirstTenKeys(ingredientsByCount, topIngredientsIndex);
 		}
 
 		console.log(processedData);
 		console.log(topIngredientsIndex);
-
 	});
 
-	function returnFirstTenKeys (object, index) {
+	function returnFirstTenKeys (object, index = []) {
+		// Initilize a keys variable
+		// Object.keys returns an array of keys in string type
 		var keys = Object.keys(object);
 
+		// Checks if the first ten keys exists in the index array
+		// If not, the key will be pushed into the index array
 		for (var i = 0; i < 10; i++) {
 			if(!index.find(function(element){return element === keys[i]})) {
 				index.push(keys[i]);
 			}
 		}
+
+		// Returns index (if needed)
+		return index;
 	}
 
 	function countByCuisineType (data) {
-		// initilize cuisineTypeIndex object to store cuisineType count
+		// Initilize cuisineTypeIndex object to store cuisineType count
 		cuisineTypeIndex = {};
 
 		// Checks if the cuisineType exists in the cuisineTypeIndex object
@@ -113,26 +125,35 @@ svg { border: solid #ccc 1px; }
 		var sortedObj = {};
 		var sortable = [];
 
+		// Pushes object keys and values into an array (to be sorted later)
 	  for (var key in obj) {
 	    sortable.push([key, obj[key]]);
 	  }
 
+		// Sorts objects by descending order
 	  sortable.sort(function(a, b) {
 	    return b[1] - a[1];
 	  });
 
+		// Moves keys and values pairs into an object
 		sortable.forEach(function(item) {
 	    sortedObj[item[0]] = item[1];
 	  });
 
+		// Returns object organized by descending order of values
 		return sortedObj;
 	}
 
 	function convertObjValuesToPercentages (obj, total) {
+		// Initilize new object (as not to change original object)
 		var newObj = {};
+
+		// Do the math
 		for (var key in obj) {
 	    newObj[key] = obj[key] / total * 100;
 	  }
+
+		// Return new object
 		return newObj;
 	}
 </script>
