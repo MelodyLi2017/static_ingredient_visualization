@@ -50,21 +50,31 @@ svg { border: solid #ccc 1px; }
 				ingredientsByPercentage:ingredientsByPercentage
 			});
 
-			returnFirstTenKeys(ingredientsByCount, topIngredientsIndex);
+			returnFirstTenKeys(ingredientsByCount, 6, topIngredientsIndex);
 		}
 
 		console.log(processedData);
 		console.log(topIngredientsIndex);
+
+		processedData.forEach(function(d){
+			var obj = {};
+			topIngredientsIndex.forEach(function(ingredient){
+					obj[ingredient] = d.ingredientsByPercentage[ingredient];
+			});
+			var sortedObj = sortObjectValuesByDescendingOrder(obj);
+			console.log(d.cuisineType);
+			console.log(sortedObj);
+		})
 	});
 
-	function returnFirstTenKeys (object, index = []) {
+	function returnFirstXKeys (object, x = 10, index = []) {
 		// Initilize a keys variable
 		// Object.keys returns an array of keys in string type
 		var keys = Object.keys(object);
 
 		// Checks if the first ten keys exists in the index array
 		// If not, the key will be pushed into the index array
-		for (var i = 0; i < 10; i++) {
+		for (var i = 0; i < x; i++) {
 			if(!index.find(function(element){return element === keys[i]})) {
 				index.push(keys[i]);
 			}
@@ -87,7 +97,7 @@ svg { border: solid #ccc 1px; }
 			} else {
 				cuisineTypeIndex[recipe['cuisineType']] += 1;
 			}
-		})
+		});
 
 		return cuisineTypeIndex;
 	}
