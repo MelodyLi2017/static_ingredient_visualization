@@ -13,11 +13,6 @@ svg { border: solid #ccc 1px; }
 </head>
 <body>
 
-<!-- Here's an SVG element. Note that in this file it looks like the <div> above. -->
-<svg height="400" width="200">
-  <!-- Visual elements are represented by tags, which have attributes -->
-</svg>
-
 <script id="notes">
 	//import cuisines.csv
 	d3.text("cuisines.csv", function(error, data){
@@ -168,15 +163,60 @@ svg { border: solid #ccc 1px; }
 	}
 </script>
 
-<!-- This block will be automatically filled with syntax-highlighted code from the script below -->
-<pre><code id="display">
-</code></pre>
-
+<svg id = "left" width="1400" height="700">
+ <!-- <text x="35" y="5" style="font-family: Times New Roman; font-size: 6px;">
+    0% 25% 50% 75%
+  </text>
+  <line x1="0" y1="5" x2="80" y2="5" style="stroke:black;stroke-width:1"/>
+  <line x1="40" y1="5" x2="40" y2="9" style="stroke:black;stroke-width:1"/>
+  <line x1="50" y1="5" x2="50" y2="9" style="stroke:black;stroke-width:1"/>
+  <line x1="60" y1="5" x2="60" y2="9" style="stroke:black;stroke-width:1"/>
+  <line x1="70" y1="5" x2="70" y2="9" style="stroke:black;stroke-width:1"/>
+  <rect y="10" width="80" height="400" style="fill:beige" /> -->
+</svg>
 
 <script>
-document.getElementById("display").innerText = document.getElementById("notes").innerText;
-hljs.initHighlightingOnLoad();
-</script>
+  	var svg = d3.select('#left');  
+  	var cuisine_types = ['North American', 'East Asian', 'Middle East', 'Southeast Asian', 'Western European', 'African', 'Latin American', 'South American'];
+ 	var counts = [1, 45, 50, 30];
+ 	var total = 100;
+  	var x_scale = d3.scaleLinear().domain([0,75]).range([30,200]);
+ 	var y_scale = d3.scaleLinear().domain([0,29]).range([670,30]);
+ 	var svg_width = 22 + cuisine_types.length*(10 + x_scale(65));
+	svg.attr("width", svg_width);
+
+	//creates axis
+	var x_axis = d3.axisTop(x_scale).ticks(7);
+
+
+	cuisine_types.forEach(function(d, i) {
+		//creates axises and background grey rectangle for each cuisine type, axises are currently left aligned
+		//axises need to be updated to start in the center if we're still doing that
+		var x_coord = 22 + (i*(10 + x_scale(65)));
+		var x_coord2 = x_coord - 30;
+		svg.append("g").attr("transform", "translate(" + x_coord2 + ", 30)").call(x_axis);
+		svg.append("rect")
+		.attr("x", x_coord)
+		.attr("y", 40)
+		.attr("width", x_scale(65))
+		.attr("height", 640)
+		.style("fill-opacity", .1);
+		//for every cuisine type (column in visualization), creates a rectangle for each ingredient and determines
+		//width by percentage of appearance (this needs to be updated to use the actual data. It curretly uses dummy data)
+		//Currently left aligned, calculations and adjustments would need to be made if we want to make each of our rectangles
+		//centered within the columns.
+		counts.forEach(function(d, i) {
+			svg.append("rect")
+			.attr("x", x_coord)
+			.attr("y", 50+(i*45))
+			.attr("width", x_scale(d))
+			.attr("height", 40)
+			.style("fill", "6060B7")
+		});
+	});
+	
+  // Add the bars to a column of the svg element.
+ </script>
 
 
 </body>
