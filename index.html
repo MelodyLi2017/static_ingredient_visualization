@@ -9,13 +9,46 @@
 <style>
 body { font-family: 'Alegreya Sans', Calibri, sans-serif; }
 svg { border: solid #ccc 1px; }
+rect {
+	fill: grey
+}
+.butter {
+	fill: #069FC2;
+}
+/*.egg {
+	fill: #B8E986;
+}
+.tomato{
+	fill: #FFD93B;
+}
+.corn {
+	fill:yellow;
+}
+.onion {
+	fill: purple;
+}
+.garlic {
+	fill: white;
+}
+.cayenne {
+	fill: #F8CE8B;
+}*/
+.olive_oil {
+	fill: #552E85;
+}
+/*.fish {
+	fill: grey;
+}
+.wheat {
+	fill: #BA8733;
+}*/
 </style>
 </head>
 <body>
 
-<svg id = "left" width="1400" height="700">
+<svg id = "left" width="3000" height="1700">
  <!-- <text x="35" y="5" style="font-family: Times New Roman; font-size: 6px;">
-    0% 25% 50% 75%
+    0% 25% 50% 65%
   </text>
   <line x1="0" y1="5" x2="80" y2="5" style="stroke:black;stroke-width:1"/>
   <line x1="40" y1="5" x2="40" y2="9" style="stroke:black;stroke-width:1"/>
@@ -108,11 +141,13 @@ svg { border: solid #ccc 1px; }
 		// Return new object
 		return newObj;
 	}
-	
-	
-	var svg = d3.select('#left');  
-  	var x_scale = d3.scaleLinear().domain([0,75]).range([30,200]);
- 	//var y_scale = d3.scaleLinear().domain([0,29]).range([670,30]);
+
+
+	var svg = d3.select('#left');
+  	var cuisine_types = ['North American', 'Western European', 'Northern European','Eastern European', 'Southern European', 'Latin American', 'Middle Eastern', 'African', 'South Asian', 'Southeast Asian', 'East Asian',];
+  	var x_scale = d3.scaleLinear().domain([0,65]).range([0,170]);
+ 	var y_scale = d3.scaleLinear().domain([0,29]).range([670,30]);
+ 	var svg_width = 22 + cuisine_types.length*(10 + x_scale(65));
 	//creates axis
 	var x_axis = d3.axisTop(x_scale).ticks(7);
 	//import cuisines.csv
@@ -142,16 +177,25 @@ svg { border: solid #ccc 1px; }
 				ingredientsByCount:ingredientsByCount,
 				ingredientsByPercentage:ingredientsByPercentage
 			});
-			returnFirstXKeys(ingredientsByCount, 6, topIngredientsIndex);
+			returnFirstXKeys(ingredientsByCount, 5, topIngredientsIndex);
 		}
 		console.log(processedData);
 		console.log(topIngredientsIndex);
-		var svg_width = 22 + processedData.length*(10 + x_scale(65));
-		svg.attr("width", svg_width);
-		processedData.forEach(function(d, i){
+
+		var cat = [];
+
+		cuisine_types.forEach(function(cuisine_type) {
+				processedData.forEach(function(dataSet) {
+					if (dataSet.cuisineType === cuisine_type.replace(/\s/g, "")) {
+						cat.push(dataSet);
+					}
+			});
+		});
+
+		cat.forEach(function(d, i){
 			var obj = {};
 			topIngredientsIndex.forEach(function(ingredient){
-					obj[ingredient] = d.ingredientsByPercentage[ingredient];
+					obj[ingredient] = (d.ingredientsByPercentage[ingredient] !== undefined ? d.ingredientsByPercentage[ingredient] : 0);
 			});
 			var sortedObj = sortObjectValuesByDescendingOrder(obj);
 			console.log(d.cuisineType);
@@ -159,7 +203,7 @@ svg { border: solid #ccc 1px; }
 			//creates axises and background grey rectangle for each cuisine type, axises are currently left aligned
 			//axises need to be updated to start in the center if we're still doing that
 			var x_coord = 22 + (i*(10 + x_scale(65)));
-			var x_coord2 = x_coord - 30;
+			var x_coord2 = x_coord;
 			svg.append("g").attr("transform", "translate(" + x_coord2 + ", 40)").call(x_axis);
 			svg.append("text")
 			.attr("x", x_coord)
@@ -169,50 +213,35 @@ svg { border: solid #ccc 1px; }
 			.attr("x", x_coord)
 			.attr("y", 45)
 			.attr("width", x_scale(65))
-			.attr("height", 640)
+			.attr("height", topIngredientsIndex.length * 45)
 			.style("fill-opacity", .1);
-			var counts = Object.values(sortedObj).slice(0, 8);
+			var counts = Object.values(sortedObj);
 			console.log(counts)
-			var ingredient_names = Object.keys(obj);
-			console.log(ingredient_names);
 			//for every cuisine type (column in visualization), creates a rectangle for each ingredient and determines
 			//width by percentage of appearance (this needs to be updated to use the actual data. It curretly uses dummy data)
 			//Currently left aligned, calculations and adjustments would need to be made if we want to make each of our rectangles
 			//centered within the columns.
-			counts.forEach(function(d, i) {
-				if (ingredient_names[i] == 'eggs'){
-					var color = 'eb6464'
-					var k = .3;
-				}
-				else if (ingredient_names[i] == 'butter'){
-					var color = '7ad57a'
-					var k = .5;
-				}
-				else if (ingredient_names[i] == 'onion'){
-					var color = 'ffc392';
-					var k = .8;
-				}
-				else if (ingredient_names[i] == 'cayenne'){
-					var color = '7ad57a';
-					var k = .8;
-				}
-				else {
-					var k = .6;
-					var color = '6060B7';
-				}
+			// counts.forEach(function(d, i) {
+			// 	svg.append("rect")
+			// 	.attr("x", x_coord)
+			// 	.attr("y", 50+(i*45))
+			// 	.attr("width", x_scale(d) * 0.95)
+			// 	.attr("height", 40)
+			// 	.style("fill", "6060B7")
+			// });
+			var i = 0;
+			for (var ingredient in sortedObj) {
 				svg.append("rect")
 				.attr("x", x_coord)
-				.attr("y", 50+(i*55))
-				.attr("width", x_scale(d))
-				.attr("height", 50)
-				.style("fill", color)
-				var ingredient = '#' + ingredient_names[i];
-				var item = d3.select(ingredient); 
-				var transformation = "translate("+ (x_coord + 10) + ','+ (57+(i*55)) +') scale (' + k + ')';
-				item.attr("transform", transformation);
-			});
+				.attr("y", 50+(i*45))
+				.attr("width", x_scale(sortedObj[ingredient]) * 0.95)
+				.attr("height", 40)
+				.attr("class", ingredient)
+				i++;
+			}
 		});
 	});
+
   // Add the bars to a column of the svg element.
  </script>
 
