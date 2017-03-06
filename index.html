@@ -13,7 +13,113 @@ svg { border: solid #ccc 1px; }
 </head>
 <body>
 
-<script id="notes">
+<svg id = "left" width="1400" height="700">
+ <!-- <text x="35" y="5" style="font-family: Times New Roman; font-size: 6px;">
+    0% 25% 50% 75%
+  </text>
+  <line x1="0" y1="5" x2="80" y2="5" style="stroke:black;stroke-width:1"/>
+  <line x1="40" y1="5" x2="40" y2="9" style="stroke:black;stroke-width:1"/>
+  <line x1="50" y1="5" x2="50" y2="9" style="stroke:black;stroke-width:1"/>
+  <line x1="60" y1="5" x2="60" y2="9" style="stroke:black;stroke-width:1"/>
+  <line x1="70" y1="5" x2="70" y2="9" style="stroke:black;stroke-width:1"/>
+  <rect y="10" width="80" height="400" style="fill:beige" /> -->
+</svg>
+
+<script>
+	function returnFirstXKeys (object, x = 10, index = []) {
+		// Initilize a keys variable
+		// Object.keys returns an array of keys in string type
+		var keys = Object.keys(object);
+		// Checks if the first ten keys exists in the index array
+		// If not, the key will be pushed into the index array
+		for (var i = 0; i < x; i++) {
+			if(!index.find(function(element){return element === keys[i]})) {
+				index.push(keys[i]);
+			}
+		}
+		// Returns index (if needed)
+		return index;
+	}
+	function countByCuisineType (data) {
+		// Initilize cuisineTypeIndex object to store cuisineType count
+		cuisineTypeIndex = {};
+		// Checks if the cuisineType exists in the cuisineTypeIndex object
+		// If not, it will set the cuisineType count to 1
+		// Otherwise, it will add 1 to the count
+		data.forEach(function(recipe){
+			if(cuisineTypeIndex[recipe['cuisineType']] === undefined) {
+				cuisineTypeIndex[recipe['cuisineType']] = 1;
+			} else {
+				cuisineTypeIndex[recipe['cuisineType']] += 1;
+			}
+		});
+		return cuisineTypeIndex;
+	}
+	function filterByCuisineType (data, type) {
+		// Checks if object key "cuisine" matches filtered specified type
+		// Returns array of recipe objects filtered by specified type
+		return data.filter(function(row) {
+			return row['cuisineType'] === type;
+		});
+	}
+	function countIngredients (data) {
+		// initilize ingredientsIndex object to store ingredient count
+		var ingredientsIndex = {};
+		// Checks if the ingredient exists in the ingredientsIndex object
+		// If not, it will set the ingredient count to 1
+		// Otherwise, it will add 1 to the count
+		for (var i = 0; i < data.length; i++) {
+			data[i].ingredients.forEach(function(ingredient) {
+				if(ingredientsIndex[ingredient] === undefined) {
+					ingredientsIndex[ingredient] = 1;
+				} else {
+					ingredientsIndex[ingredient] += 1;
+				}
+			})
+		}
+		// return ingredientsIndex after ingredient count sorted by descending order
+		return sortObjectValuesByDescendingOrder(ingredientsIndex);
+	}
+	function sortObjectValuesByDescendingOrder(obj) {
+		var sortedObj = {};
+		var sortable = [];
+		// Pushes object keys and values into an array (to be sorted later)
+	  for (var key in obj) {
+	    sortable.push([key, obj[key]]);
+	  }
+		// Sorts objects by descending order
+	  sortable.sort(function(a, b) {
+	    return b[1] - a[1];
+	  });
+		// Moves keys and values pairs into an object
+		sortable.forEach(function(item) {
+	    sortedObj[item[0]] = item[1];
+	  });
+		// Returns object organized by descending order of values
+		return sortedObj;
+	}
+	function convertObjValuesToPercentages (obj, total) {
+		// Initilize new object (as not to change original object)
+		var newObj = {};
+		// Do the math
+		for (var key in obj) {
+	    newObj[key] = obj[key] / total * 100;
+	  }
+		// Return new object
+		return newObj;
+	}
+	
+	
+	var svg = d3.select('#left');  
+  	var cuisine_types = ['North American', 'East Asian', 'Middle East', 'Southeast Asian', 'Western European', 'African', 'Latin American', 'South American'];
+ 	var counts = [1, 45, 50, 30];
+ 	var total = 100;
+  	var x_scale = d3.scaleLinear().domain([0,75]).range([30,200]);
+ 	var y_scale = d3.scaleLinear().domain([0,29]).range([670,30]);
+ 	var svg_width = 22 + cuisine_types.length*(10 + x_scale(65));
+	svg.attr("width", svg_width);
+	//creates axis
+	var x_axis = d3.axisTop(x_scale).ticks(7);
 	//import cuisines.csv
 	d3.text("cuisines.csv", function(error, data){
 		rawData = d3.csvParseRows(data, function(row) {
@@ -28,190 +134,60 @@ svg { border: solid #ccc 1px; }
 				ingredients: ingredients
 			};
 		});
-
 		var processedData = [];
 		var topIngredientsIndex = [];
-
 		var cuisineTypesByCount = countByCuisineType(rawData);
 		for (var cuisineType in cuisineTypesByCount) {
 			var cuisineTypeCount = cuisineTypesByCount[cuisineType];
 			var ingredientsByCount = countIngredients(filterByCuisineType(rawData, cuisineType));
 			var ingredientsByPercentage = convertObjValuesToPercentages(ingredientsByCount, cuisineTypeCount);
-
 			processedData.push({
 				cuisineType: cuisineType,
 				totalNumberOfRecipes:cuisineTypeCount,
 				ingredientsByCount:ingredientsByCount,
 				ingredientsByPercentage:ingredientsByPercentage
 			});
-
-			returnFirstTenKeys(ingredientsByCount, 6, topIngredientsIndex);
+			returnFirstXKeys(ingredientsByCount, 6, topIngredientsIndex);
 		}
-
 		console.log(processedData);
 		console.log(topIngredientsIndex);
-
-		processedData.forEach(function(d){
+		processedData.forEach(function(d, i){
 			var obj = {};
 			topIngredientsIndex.forEach(function(ingredient){
 					obj[ingredient] = d.ingredientsByPercentage[ingredient];
 			});
 			var sortedObj = sortObjectValuesByDescendingOrder(obj);
 			console.log(d.cuisineType);
-			console.log(sortedObj);
-		})
-	});
-
-	function returnFirstXKeys (object, x = 10, index = []) {
-		// Initilize a keys variable
-		// Object.keys returns an array of keys in string type
-		var keys = Object.keys(object);
-
-		// Checks if the first ten keys exists in the index array
-		// If not, the key will be pushed into the index array
-		for (var i = 0; i < x; i++) {
-			if(!index.find(function(element){return element === keys[i]})) {
-				index.push(keys[i]);
-			}
-		}
-
-		// Returns index (if needed)
-		return index;
-	}
-
-	function countByCuisineType (data) {
-		// Initilize cuisineTypeIndex object to store cuisineType count
-		cuisineTypeIndex = {};
-
-		// Checks if the cuisineType exists in the cuisineTypeIndex object
-		// If not, it will set the cuisineType count to 1
-		// Otherwise, it will add 1 to the count
-		data.forEach(function(recipe){
-			if(cuisineTypeIndex[recipe['cuisineType']] === undefined) {
-				cuisineTypeIndex[recipe['cuisineType']] = 1;
-			} else {
-				cuisineTypeIndex[recipe['cuisineType']] += 1;
-			}
-		});
-
-		return cuisineTypeIndex;
-	}
-
-	function filterByCuisineType (data, type) {
-		// Checks if object key "cuisine" matches filtered specified type
-		// Returns array of recipe objects filtered by specified type
-		return data.filter(function(row) {
-			return row['cuisineType'] === type;
-		});
-	}
-
-	function countIngredients (data) {
-		// initilize ingredientsIndex object to store ingredient count
-		var ingredientsIndex = {};
-
-		// Checks if the ingredient exists in the ingredientsIndex object
-		// If not, it will set the ingredient count to 1
-		// Otherwise, it will add 1 to the count
-		for (var i = 0; i < data.length; i++) {
-			data[i].ingredients.forEach(function(ingredient) {
-				if(ingredientsIndex[ingredient] === undefined) {
-					ingredientsIndex[ingredient] = 1;
-				} else {
-					ingredientsIndex[ingredient] += 1;
-				}
-			})
-		}
-
-		// return ingredientsIndex after ingredient count sorted by descending order
-		return sortObjectValuesByDescendingOrder(ingredientsIndex);
-	}
-
-	function sortObjectValuesByDescendingOrder(obj) {
-		var sortedObj = {};
-		var sortable = [];
-
-		// Pushes object keys and values into an array (to be sorted later)
-	  for (var key in obj) {
-	    sortable.push([key, obj[key]]);
-	  }
-
-		// Sorts objects by descending order
-	  sortable.sort(function(a, b) {
-	    return b[1] - a[1];
-	  });
-
-		// Moves keys and values pairs into an object
-		sortable.forEach(function(item) {
-	    sortedObj[item[0]] = item[1];
-	  });
-
-		// Returns object organized by descending order of values
-		return sortedObj;
-	}
-
-	function convertObjValuesToPercentages (obj, total) {
-		// Initilize new object (as not to change original object)
-		var newObj = {};
-
-		// Do the math
-		for (var key in obj) {
-	    newObj[key] = obj[key] / total * 100;
-	  }
-
-		// Return new object
-		return newObj;
-	}
-</script>
-
-<svg id = "left" width="1400" height="700">
- <!-- <text x="35" y="5" style="font-family: Times New Roman; font-size: 6px;">
-    0% 25% 50% 75%
-  </text>
-  <line x1="0" y1="5" x2="80" y2="5" style="stroke:black;stroke-width:1"/>
-  <line x1="40" y1="5" x2="40" y2="9" style="stroke:black;stroke-width:1"/>
-  <line x1="50" y1="5" x2="50" y2="9" style="stroke:black;stroke-width:1"/>
-  <line x1="60" y1="5" x2="60" y2="9" style="stroke:black;stroke-width:1"/>
-  <line x1="70" y1="5" x2="70" y2="9" style="stroke:black;stroke-width:1"/>
-  <rect y="10" width="80" height="400" style="fill:beige" /> -->
-</svg>
-
-<script>
-  	var svg = d3.select('#left');  
-  	var cuisine_types = ['North American', 'East Asian', 'Middle East', 'Southeast Asian', 'Western European', 'African', 'Latin American', 'South American'];
- 	var counts = [1, 45, 50, 30];
- 	var total = 100;
-  	var x_scale = d3.scaleLinear().domain([0,75]).range([30,200]);
- 	var y_scale = d3.scaleLinear().domain([0,29]).range([670,30]);
- 	var svg_width = 22 + cuisine_types.length*(10 + x_scale(65));
-	svg.attr("width", svg_width);
-
-	//creates axis
-	var x_axis = d3.axisTop(x_scale).ticks(7);
-
-
-	cuisine_types.forEach(function(d, i) {
-		//creates axises and background grey rectangle for each cuisine type, axises are currently left aligned
-		//axises need to be updated to start in the center if we're still doing that
-		var x_coord = 22 + (i*(10 + x_scale(65)));
-		var x_coord2 = x_coord - 30;
-		svg.append("g").attr("transform", "translate(" + x_coord2 + ", 30)").call(x_axis);
-		svg.append("rect")
-		.attr("x", x_coord)
-		.attr("y", 40)
-		.attr("width", x_scale(65))
-		.attr("height", 640)
-		.style("fill-opacity", .1);
-		//for every cuisine type (column in visualization), creates a rectangle for each ingredient and determines
-		//width by percentage of appearance (this needs to be updated to use the actual data. It curretly uses dummy data)
-		//Currently left aligned, calculations and adjustments would need to be made if we want to make each of our rectangles
-		//centered within the columns.
-		counts.forEach(function(d, i) {
+			console.log(sortedObj[Object.keys(sortedObj)[0]]);
+			//creates axises and background grey rectangle for each cuisine type, axises are currently left aligned
+			//axises need to be updated to start in the center if we're still doing that
+			var x_coord = 22 + (i*(10 + x_scale(65)));
+			var x_coord2 = x_coord - 30;
+			svg.append("g").attr("transform", "translate(" + x_coord2 + ", 40)").call(x_axis);
+			svg.append("text")
+			.attr("x", x_coord)
+			.attr("y", 15)
+			.text(d.cuisineType);
 			svg.append("rect")
 			.attr("x", x_coord)
-			.attr("y", 50+(i*45))
-			.attr("width", x_scale(d))
-			.attr("height", 40)
-			.style("fill", "6060B7")
+			.attr("y", 45)
+			.attr("width", x_scale(65))
+			.attr("height", 640)
+			.style("fill-opacity", .1);
+			var counts = Object.values(sortedObj);
+			console.log(counts)
+			//for every cuisine type (column in visualization), creates a rectangle for each ingredient and determines
+			//width by percentage of appearance (this needs to be updated to use the actual data. It curretly uses dummy data)
+			//Currently left aligned, calculations and adjustments would need to be made if we want to make each of our rectangles
+			//centered within the columns.
+			counts.forEach(function(d, i) {
+				svg.append("rect")
+				.attr("x", x_coord)
+				.attr("y", 50+(i*45))
+				.attr("width", x_scale(d) * 0.95)
+				.attr("height", 40)
+				.style("fill", "6060B7")
+			});
 		});
 	});
 	
