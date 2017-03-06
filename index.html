@@ -112,8 +112,6 @@ svg { border: solid #ccc 1px; }
 	
 	var svg = d3.select('#left');  
   	var cuisine_types = ['North American', 'East Asian', 'Middle East', 'Southeast Asian', 'Western European', 'African', 'Latin American', 'South American'];
- 	var counts = [1, 45, 50, 30];
- 	var total = 100;
   	var x_scale = d3.scaleLinear().domain([0,75]).range([30,200]);
  	var y_scale = d3.scaleLinear().domain([0,29]).range([670,30]);
  	var svg_width = 22 + cuisine_types.length*(10 + x_scale(65));
@@ -174,7 +172,7 @@ svg { border: solid #ccc 1px; }
 			.attr("width", x_scale(65))
 			.attr("height", 640)
 			.style("fill-opacity", .1);
-			var counts = Object.values(sortedObj);
+			var counts = Object.values(sortedObj).slice(0, 8);
 			console.log(counts)
 			//for every cuisine type (column in visualization), creates a rectangle for each ingredient and determines
 			//width by percentage of appearance (this needs to be updated to use the actual data. It curretly uses dummy data)
