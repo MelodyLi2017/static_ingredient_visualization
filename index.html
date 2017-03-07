@@ -10,13 +10,23 @@
 body { font-family: 'Alegreya Sans', Calibri, sans-serif; }
 svg { border: solid #ccc 1px; }
 rect {
-	fill: grey
+	fill: grey;
 }
-.butter {
+
+.background {
+	fill: black;
+}
+.butter{
+	fill: #069FC2;
+}
+.cream {
+	fill: #069FC2;
+}
+.milk {
 	fill: #069FC2;
 }
 /*.egg {
-	fill: #B8E986;
+	fill: #99C6BC;
 }
 .tomato{
 	fill: #FFD93B;
@@ -32,14 +42,14 @@ rect {
 }
 .cayenne {
 	fill: #F8CE8B;
-}*/
+}
 .olive_oil {
 	fill: #552E85;
 }
-/*.fish {
-	fill: grey;
+.fish {
+	fill: #B8E986;
 }
-.wheat {
+/*.wheat {
 	fill: #BA8733;
 }*/
 </style>
@@ -47,15 +57,8 @@ rect {
 <body>
 
 <svg id = "left" width="3000" height="1700">
- <!-- <text x="35" y="5" style="font-family: Times New Roman; font-size: 6px;">
-    0% 25% 50% 65%
-  </text>
-  <line x1="0" y1="5" x2="80" y2="5" style="stroke:black;stroke-width:1"/>
-  <line x1="40" y1="5" x2="40" y2="9" style="stroke:black;stroke-width:1"/>
-  <line x1="50" y1="5" x2="50" y2="9" style="stroke:black;stroke-width:1"/>
-  <line x1="60" y1="5" x2="60" y2="9" style="stroke:black;stroke-width:1"/>
-  <line x1="70" y1="5" x2="70" y2="9" style="stroke:black;stroke-width:1"/>
-  <rect y="10" width="80" height="400" style="fill:beige" /> -->
+  <g id = 'graph'></g>
+  <g id = 'icons'></g>
 </svg>
 
 <script>
@@ -143,11 +146,11 @@ rect {
 	}
 
 
-	var svg = d3.select('#left');
+	var svg = d3.select('#graph');
   	var cuisine_types = ['North American', 'Western European', 'Northern European','Eastern European', 'Southern European', 'Latin American', 'Middle Eastern', 'African', 'South Asian', 'Southeast Asian', 'East Asian',];
-  	var x_scale = d3.scaleLinear().domain([0,65]).range([0,170]);
- 	var y_scale = d3.scaleLinear().domain([0,29]).range([670,30]);
- 	var svg_width = 22 + cuisine_types.length*(10 + x_scale(65));
+  	var x_scale = d3.scaleLinear().domain([0,90]).range([0,175]);
+ 	var svg_width = 22 + cuisine_types.length*(10 + x_scale(90));
+ 	d3.select("svg").attr("width", svg_width);
 	//creates axis
 	var x_axis = d3.axisTop(x_scale).ticks(7);
 	//import cuisines.csv
@@ -202,42 +205,44 @@ rect {
 			console.log(sortedObj[Object.keys(sortedObj)[0]]);
 			//creates axises and background grey rectangle for each cuisine type, axises are currently left aligned
 			//axises need to be updated to start in the center if we're still doing that
-			var x_coord = 22 + (i*(10 + x_scale(65)));
-			var x_coord2 = x_coord;
-			svg.append("g").attr("transform", "translate(" + x_coord2 + ", 40)").call(x_axis);
+			var x_coord = 22 + (i*(10 + x_scale(90)));
+			svg.append("g").attr("transform", "translate(" + x_coord + ", 40)").call(x_axis);
 			svg.append("text")
 			.attr("x", x_coord)
 			.attr("y", 15)
-			.text(d.cuisineType);
+			.text(cuisine_types[i]);
 			svg.append("rect")
 			.attr("x", x_coord)
 			.attr("y", 45)
-			.attr("width", x_scale(65))
-			.attr("height", topIngredientsIndex.length * 45)
-			.style("fill-opacity", .1);
+			.attr("width", x_scale(90) +3)
+			.attr("height", topIngredientsIndex.length * 50)
+			.style("fill-opacity", .15)
+			.attr("class", "background");
 			var counts = Object.values(sortedObj);
-			console.log(counts)
-			//for every cuisine type (column in visualization), creates a rectangle for each ingredient and determines
-			//width by percentage of appearance (this needs to be updated to use the actual data. It curretly uses dummy data)
-			//Currently left aligned, calculations and adjustments would need to be made if we want to make each of our rectangles
-			//centered within the columns.
-			// counts.forEach(function(d, i) {
-			// 	svg.append("rect")
-			// 	.attr("x", x_coord)
-			// 	.attr("y", 50+(i*45))
-			// 	.attr("width", x_scale(d) * 0.95)
-			// 	.attr("height", 40)
-			// 	.style("fill", "6060B7")
-			// });
-			var i = 0;
+			console.log(counts);
+			var j = 0;
 			for (var ingredient in sortedObj) {
+				var width = x_scale(sortedObj[ingredient])
 				svg.append("rect")
 				.attr("x", x_coord)
-				.attr("y", 50+(i*45))
-				.attr("width", x_scale(sortedObj[ingredient]) * 0.95)
-				.attr("height", 40)
+				.attr("y", 47+(j*50))
+				.attr("width", width)
+				.attr("height", 45)
 				.attr("class", ingredient)
-				i++;
+				d3.select("#icons").append("svg:image")
+				.attr("xlink:href", "images/"+ingredient+".svg")
+				.attr("height", 35)
+				.attr("id", ingredient + i);
+				// if (width < x_scale(20)){
+				// 	console.log(document.getElementById(ingredient+i).style.width);
+				x_trans = x_coord + width + 7;
+				// }
+				// else {
+				// 	x_trans = x_coord+5
+				// }
+				var transformation = "translate("+ x_trans + ', '+ (53+(j*50)) +')';
+				d3.select("#"+ingredient+i).attr("transform", transformation)
+				j++;
 			}
 		});
 	});

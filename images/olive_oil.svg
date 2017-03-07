@@ -1,55 +1,267 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="57px" height="67px" viewBox="0 0 57 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-    <title>olive_oil</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <path d="M14.6303523,0.994934127 C16.0621441,2.74241641 16.9472513,5.15295563 16.9472513,7.8149343 C16.9472513,10.476913 16.0621441,12.8874522 14.6303523,14.6349345 C13.1985605,12.8874522 12.3134533,10.476913 12.3134533,7.8149343 C12.3134533,5.15295563 13.1985605,2.74241641 14.6303523,0.994934127 L14.6303523,0.994934127 Z" id="path-1"></path>
-        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="4.63379803" height="13.6400003" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <path d="M13.5533347,13.6666441 C14.9851264,15.4141263 15.8702337,17.8246656 15.8702337,20.4866442 C15.8702337,23.1486229 14.9851264,25.5591621 13.5533347,27.3066444 C12.1215429,25.5591621 11.2364357,23.1486229 11.2364357,20.4866442 C11.2364357,17.8246656 12.1215429,15.4141263 13.5533347,13.6666441 L13.5533347,13.6666441 Z" id="path-3"></path>
-        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="4.63379803" height="13.6400003" fill="white">
-            <use xlink:href="#path-3"></use>
-        </mask>
-        <path d="M23.8551528,5.32360487 C24.7142278,6.45432869 25.2452922,8.01408937 25.2452922,9.73654615 C25.2452922,11.4590029 24.7142278,13.0187636 23.8551528,14.1494874 C22.9960777,13.0187636 22.4650134,11.4590029 22.4650134,9.73654615 C22.4650134,8.01408937 22.9960777,6.45432869 23.8551528,5.32360487 L23.8551528,5.32360487 Z" id="path-5"></path>
-        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="2.78027882" height="8.82588258" fill="white">
-            <use xlink:href="#path-5"></use>
-        </mask>
-        <path d="M22.0016336,14.553908 C22.8607086,15.7874249 23.391773,17.488982 23.391773,19.3680258 C23.391773,21.2470696 22.8607086,22.9486267 22.0016336,24.1821436 C21.1425585,22.9486267 20.6114942,21.2470696 20.6114942,19.3680258 C20.6114942,17.488982 21.1425585,15.7874249 22.0016336,14.553908 L22.0016336,14.553908 Z" id="path-7"></path>
-        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="2.78027882" height="9.62823554" fill="white">
-            <use xlink:href="#path-7"></use>
-        </mask>
-        <path d="M6.56695713,7.936732 C7.71239055,9.33471782 8.42047634,11.2631492 8.42047634,13.3927321 C8.42047634,15.5223151 7.71239055,17.4507465 6.56695713,18.8487323 C5.4215237,17.4507465 4.71343792,15.5223151 4.71343792,13.3927321 C4.71343792,11.2631492 5.4215237,9.33471782 6.56695713,7.936732 L6.56695713,7.936732 Z" id="path-9"></path>
-        <mask id="mask-10" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="3.70703842" height="10.9120003" fill="white">
-            <use xlink:href="#path-9"></use>
-        </mask>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="olive_oil" transform="translate(-1.000000, 0.000000)">
-            <g id="Olive-Oil" opacity="0.900000036" transform="translate(22.000000, 0.000000)">
-                <path d="M10.0556048,1.5 L19.527635,3.5 C19.527635,24.5 31.9908419,40.25 28.3251928,59 C27.1053737,61.4957771 17.7671639,61.9152531 14.6625964,61.9857562 C14.6625964,62 14.4865891,62 14.1738432,61.9950563 C13.846704,62 13.6625964,62 13.6625964,62 C10.6514341,61.911098 1.80556098,61.4835641 0.645117378,59 C-2.85925238,40.25 10.0556048,22.5 10.0556048,1.5 Z" id="Combined-Shape" fill="#F0F7FE"></path>
-                <path d="M21.0428526,22 C24.1560794,34.6859113 29.6823403,45.8567739 27.2045666,58.5144969 C26.0877608,60.7965807 17.5796981,61.1907504 14.6739306,61.2588327 L14.6739306,61.2730474 C14.6739306,61.2730474 14.5029804,61.2730474 14.2002538,61.268122 C13.8835951,61.2730474 13.7047773,61.2730474 13.7047773,61.2730474 L13.7047773,61.2577724 C10.8872466,61.1867072 2.83035711,60.7850168 1.76809814,58.5144969 C-0.60065974,45.8567739 4.68245949,34.6859113 7.65871223,22 L21.0428526,22 L21.0428526,22 Z" id="Combined-Shape-Copy-2" fill="#DFF513"></path>
-                <path d="M18,3.17744297 L18,5.00922203 C18,5.55641359 17.5621186,6 16.9970707,6 L12.0029293,6 C11.4490268,6 11,5.54902482 11,5.00922203 L11,1.69940714 L18,3.17744297 Z" id="Combined-Shape" fill-opacity="0.307433197" fill="#CDB893"></path>
-                <path d="M18,3.17744297 L18,0.990777969 C18,0.45097518 17.5509732,0 16.9970707,0 L12.0029293,0 C11.4378814,0 11,0.443586406 11,0.990777969 L11,1.69940714 L18,3.17744297 Z" id="Combined-Shape" fill="#D5B687"></path>
-                <path d="M28.6488618,46.4872091 C33.0501517,43.3503001 36,37.5885344 36,31 C36,21.0588745 29,17 21,13 C20.7596222,12.8798111 20.5201473,12.7741208 20.281738,12.6824358 C20.4506671,13.7465253 20.6435989,14.7988156 20.85596,15.8406265 C26.9810072,19.0397199 32,22.6586291 32,30.4951062 C32,34.992442 30.4140826,39.0452847 27.876738,41.8922461 C28.1932911,43.4191631 28.4568069,44.9490454 28.6488618,46.4872091 Z" id="Combined-Shape" fill="#E4F1FE"></path>
-            </g>
-            <g id="Olive-2" transform="translate(53.430879, 57.491513) rotate(14.000000) translate(-53.430879, -57.491513) translate(48.930879, 53.991513)">
-                <ellipse id="Oval-6" fill="#A9CC56" cx="4.5" cy="3.21428571" rx="4.5" ry="3.21428571"></ellipse>
-                <path d="M0.30580229,4.38134656 C0.959764241,5.57956031 2.5910741,6.42857143 4.5,6.42857143 C6.98528137,6.42857143 9,4.9894867 9,3.21428571 C9,2.23115302 8.38206382,1.35111084 7.40848342,0.761510582 C7.60593192,1.12328317 7.71428571,1.51688895 7.71428571,1.92857143 C7.71428571,3.70377241 5.69956709,5.14285714 3.21428571,5.14285714 C2.10539011,5.14285714 1.0901747,4.85636247 0.30580229,4.38134656 Z" id="Combined-Shape" fill="#88A740"></path>
-            </g>
-            <g id="Olive-1" transform="translate(35.000000, 59.000000)">
-                <ellipse id="Oval-6" fill="#A9CC56" cx="5" cy="3.57142857" rx="5" ry="3.57142857"></ellipse>
-                <path d="M0.339780323,4.86816284 C1.06640471,6.19951146 2.87897122,7.14285714 5,7.14285714 C7.76142375,7.14285714 10,5.54387411 10,3.57142857 C10,2.47905891 9.31340425,1.50123427 8.23164825,0.846122869 C8.45103547,1.24809241 8.57142857,1.68543216 8.57142857,2.14285714 C8.57142857,4.11530268 6.33285232,5.71428571 3.57142857,5.71428571 C2.33932235,5.71428571 1.21130522,5.3959583 0.339780323,4.86816284 Z" id="Combined-Shape" fill="#88A740"></path>
-            </g>
-            <g id="Olive-Leaf" transform="translate(0.000000, 37.000000)">
-                <path d="M25.0225093,13.9264671 C25.0225093,13.9264671 33.1189853,10.7840858 35.216865,7.22117665 C37.0703842,7.22117665 38.0448318,7.43386149 37.0703842,8.05933796 C33.923737,10.0791016 29.6563074,13.9264671 25.9492689,14.7932765 C22.2422305,15.6600859 14.1581234,15.0592945 10.1943557,14.7932765 L25.0225093,13.9264671 Z" id="Path-2" fill="#666651"></path>
-                <use id="Combined-Shape-Copy-10" stroke="#9EBF50" mask="url(#mask-2)" stroke-width="2" stroke-linecap="square" fill="#A9CC56" transform="translate(14.630352, 7.814934) rotate(-16.000000) translate(-14.630352, -7.814934) " xlink:href="#path-1"></use>
-                <use id="Combined-Shape-Copy-11" stroke="#9EBF50" mask="url(#mask-4)" stroke-width="2" stroke-linecap="square" fill="#A9CC56" transform="translate(13.553335, 20.486644) rotate(41.000000) translate(-13.553335, -20.486644) " xlink:href="#path-3"></use>
-                <use id="Combined-Shape-Copy-13" stroke="#9EBF50" mask="url(#mask-6)" stroke-width="2" stroke-linecap="square" fill="#A9CC56" transform="translate(23.855153, 9.736546) rotate(14.000000) translate(-23.855153, -9.736546) " xlink:href="#path-5"></use>
-                <use id="Combined-Shape-Copy-14" stroke="#9EBF50" mask="url(#mask-8)" stroke-width="2" stroke-linecap="square" fill="#A9CC56" transform="translate(22.001634, 19.368026) rotate(21.000000) translate(-22.001634, -19.368026) " xlink:href="#path-7"></use>
-                <use id="Combined-Shape-Copy-12" stroke="#9EBF50" mask="url(#mask-10)" stroke-width="2" stroke-linecap="square" fill="#A9CC56" transform="translate(6.566957, 13.392732) rotate(105.000000) translate(-6.566957, -13.392732) " xlink:href="#path-9"></use>
-            </g>
-        </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="57px"
+   height="67px"
+   viewBox="0 0 57 67"
+   version="1.1"
+   id="svg13666"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="olive_oil.svg">
+  <metadata
+     id="metadata13723">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="732"
+     inkscape:window-height="480"
+     id="namedview13721"
+     showgrid="false"
+     inkscape:zoom="3.5223881"
+     inkscape:cx="28.5"
+     inkscape:cy="33.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg13666" />
+  <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title13668">olive_oil</title>
+  <desc
+     id="desc13670">Created with Sketch.</desc>
+  <defs
+     id="defs13672">
+    <path
+       d="M14.6303523,0.994934127 C16.0621441,2.74241641 16.9472513,5.15295563 16.9472513,7.8149343 C16.9472513,10.476913 16.0621441,12.8874522 14.6303523,14.6349345 C13.1985605,12.8874522 12.3134533,10.476913 12.3134533,7.8149343 C12.3134533,5.15295563 13.1985605,2.74241641 14.6303523,0.994934127 L14.6303523,0.994934127 Z"
+       id="path-1" />
+    <mask
+       id="mask-2"
+       maskContentUnits="userSpaceOnUse"
+       maskUnits="objectBoundingBox"
+       x="0"
+       y="0"
+       width="4.63379803"
+       height="13.6400003"
+       fill="white">
+      <use
+         xlink:href="#path-1"
+         id="use13676" />
+    </mask>
+    <path
+       d="M13.5533347,13.6666441 C14.9851264,15.4141263 15.8702337,17.8246656 15.8702337,20.4866442 C15.8702337,23.1486229 14.9851264,25.5591621 13.5533347,27.3066444 C12.1215429,25.5591621 11.2364357,23.1486229 11.2364357,20.4866442 C11.2364357,17.8246656 12.1215429,15.4141263 13.5533347,13.6666441 L13.5533347,13.6666441 Z"
+       id="path-3" />
+    <mask
+       id="mask-4"
+       maskContentUnits="userSpaceOnUse"
+       maskUnits="objectBoundingBox"
+       x="0"
+       y="0"
+       width="4.63379803"
+       height="13.6400003"
+       fill="white">
+      <use
+         xlink:href="#path-3"
+         id="use13680" />
+    </mask>
+    <path
+       d="M23.8551528,5.32360487 C24.7142278,6.45432869 25.2452922,8.01408937 25.2452922,9.73654615 C25.2452922,11.4590029 24.7142278,13.0187636 23.8551528,14.1494874 C22.9960777,13.0187636 22.4650134,11.4590029 22.4650134,9.73654615 C22.4650134,8.01408937 22.9960777,6.45432869 23.8551528,5.32360487 L23.8551528,5.32360487 Z"
+       id="path-5" />
+    <mask
+       id="mask-6"
+       maskContentUnits="userSpaceOnUse"
+       maskUnits="objectBoundingBox"
+       x="0"
+       y="0"
+       width="2.78027882"
+       height="8.82588258"
+       fill="white">
+      <use
+         xlink:href="#path-5"
+         id="use13684" />
+    </mask>
+    <path
+       d="M22.0016336,14.553908 C22.8607086,15.7874249 23.391773,17.488982 23.391773,19.3680258 C23.391773,21.2470696 22.8607086,22.9486267 22.0016336,24.1821436 C21.1425585,22.9486267 20.6114942,21.2470696 20.6114942,19.3680258 C20.6114942,17.488982 21.1425585,15.7874249 22.0016336,14.553908 L22.0016336,14.553908 Z"
+       id="path-7" />
+    <mask
+       id="mask-8"
+       maskContentUnits="userSpaceOnUse"
+       maskUnits="objectBoundingBox"
+       x="0"
+       y="0"
+       width="2.78027882"
+       height="9.62823554"
+       fill="white">
+      <use
+         xlink:href="#path-7"
+         id="use13688" />
+    </mask>
+    <path
+       d="M6.56695713,7.936732 C7.71239055,9.33471782 8.42047634,11.2631492 8.42047634,13.3927321 C8.42047634,15.5223151 7.71239055,17.4507465 6.56695713,18.8487323 C5.4215237,17.4507465 4.71343792,15.5223151 4.71343792,13.3927321 C4.71343792,11.2631492 5.4215237,9.33471782 6.56695713,7.936732 L6.56695713,7.936732 Z"
+       id="path-9" />
+    <mask
+       id="mask-10"
+       maskContentUnits="userSpaceOnUse"
+       maskUnits="objectBoundingBox"
+       x="0"
+       y="0"
+       width="3.70703842"
+       height="10.9120003"
+       fill="white">
+      <use
+         xlink:href="#path-9"
+         id="use13692" />
+    </mask>
+  </defs>
+  <g
+     id="Page-1"
+     transform="translate(-8.2330508,0.56779661)"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+    <g
+       id="olive_oil"
+       transform="translate(-1,0)">
+      <g
+         id="Olive-Oil"
+         transform="translate(22,0)"
+         style="opacity:0.90000006">
+        <path
+           d="m 10.055605,1.5 9.47203,2 c 0,21 12.463207,36.75 8.797558,55.5 -1.219819,2.495777 -10.558029,2.915253 -13.662597,2.985756 0,0.01424 -0.176007,0.01424 -0.488753,0.0093 C 13.846704,62 13.662596,62 13.662596,62 10.651434,61.911098 1.805561,61.483564 0.64511738,59 -2.8592524,40.25 10.055605,22.5 10.055605,1.5 Z"
+           id="Combined-Shape"
+           inkscape:connector-curvature="0"
+           style="fill:#f0f7fe" />
+        <path
+           d="m 21.042853,22 c 3.113226,12.685911 8.639487,23.856774 6.161714,36.514497 -1.116806,2.282084 -9.624869,2.676253 -12.530636,2.744336 l 0,0.01421 c 0,0 -0.170951,0 -0.473677,-0.0049 -0.316659,0.0049 -0.495477,0.0049 -0.495477,0.0049 l 0,-0.01527 C 10.887247,61.186707 2.8303571,60.785017 1.7680981,58.514497 -0.60065974,45.856774 4.6824595,34.685911 7.6587122,22 l 13.3841408,0 0,0 z"
+           id="Combined-Shape-Copy-2"
+           inkscape:connector-curvature="0"
+           style="fill:#dff513" />
+        <path
+           d="m 18,3.177443 0,1.831779 C 18,5.5564136 17.562119,6 16.997071,6 L 12.002929,6 C 11.449027,6 11,5.5490248 11,5.009222 l 0,-3.3098149 7,1.4780359 z"
+           id="path13699"
+           inkscape:connector-curvature="0"
+           style="fill:#cdb893;fill-opacity:0.30743318" />
+        <path
+           d="M 18,3.177443 18,0.99077797 C 18,0.45097518 17.550973,0 16.997071,0 L 12.002929,0 C 11.437881,0 11,0.44358641 11,0.99077797 l 0,0.70862913 7,1.4780359 z"
+           id="path13701"
+           inkscape:connector-curvature="0"
+           style="fill:#d5b687" />
+        <path
+           d="M 28.648862,46.487209 C 33.050152,43.3503 36,37.588534 36,31 36,21.058875 29,17 21,13 c -0.240378,-0.120189 -0.479853,-0.225879 -0.718262,-0.317564 0.168929,1.064089 0.361861,2.11638 0.574222,3.158191 C 26.981007,19.03972 32,22.658629 32,30.495106 c 0,4.497336 -1.585917,8.550179 -4.123262,11.39714 0.316553,1.526917 0.580069,3.056799 0.772124,4.594963 z"
+           id="path13703"
+           inkscape:connector-curvature="0"
+           style="fill:#e4f1fe" />
+      </g>
+      <g
+         id="Olive-2"
+         transform="matrix(0.97029573,0.2419219,-0.2419219,0.97029573,49.911275,53.006829)">
+        <ellipse
+           id="Oval-6"
+           cx="4.5"
+           cy="3.2142856"
+           rx="4.5"
+           ry="3.2142856"
+           style="fill:#a9cc56" />
+        <path
+           d="M 0.30580229,4.3813466 C 0.95976424,5.5795603 2.5910741,6.4285714 4.5,6.4285714 6.9852814,6.4285714 9,4.9894867 9,3.2142857 9,2.231153 8.3820638,1.3511108 7.4084834,0.76151058 7.6059319,1.1232832 7.7142857,1.5168889 7.7142857,1.9285714 c 0,1.775201 -2.0147186,3.2142857 -4.5,3.2142857 -1.1088956,0 -2.124111,-0.2864946 -2.90848341,-0.7615105 z"
+           id="path13707"
+           inkscape:connector-curvature="0"
+           style="fill:#88a740" />
+      </g>
+      <g
+         id="Olive-1"
+         transform="translate(35,59)">
+        <ellipse
+           id="ellipse13710"
+           cx="5"
+           cy="3.5714285"
+           rx="5"
+           ry="3.5714285"
+           style="fill:#a9cc56" />
+        <path
+           d="M 0.33978032,4.8681628 C 1.0664047,6.1995115 2.8789712,7.1428571 5,7.1428571 c 2.7614237,0 5,-1.598983 5,-3.5714285 C 10,2.4790589 9.3134043,1.5012343 8.2316482,0.84612287 8.4510355,1.2480924 8.5714286,1.6854322 8.5714286,2.1428571 c 0,1.9724456 -2.2385763,3.5714286 -5,3.5714286 -1.2321062,0 -2.3601234,-0.3183274 -3.23164828,-0.8461229 z"
+           id="path13712"
+           inkscape:connector-curvature="0"
+           style="fill:#88a740" />
+      </g>
+      <g
+         id="Olive-Leaf"
+         transform="translate(0,37)">
+        <path
+           d="m 25.022509,13.926467 c 0,0 8.096476,-3.142381 10.194356,-6.7052903 1.853519,0 2.827967,0.2126848 1.853519,0.8381613 -3.146647,2.019764 -7.414077,5.867129 -11.121115,6.733938 -3.707038,0.86681 -11.791146,0.266019 -15.754913,0 l 14.828153,-0.866809 z"
+           id="Path-2"
+           inkscape:connector-curvature="0"
+           style="fill:#666651" />
+        <use
+           id="Combined-Shape-Copy-10"
+           mask="url(#mask-2)"
+           transform="matrix(0.9612617,-0.27563736,0.27563736,0.9612617,-1.5873327,4.3354088)"
+           xlink:href="#path-1"
+           style="fill:#a9cc56;stroke:#9ebf50;stroke-width:2;stroke-linecap:square"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           id="Combined-Shape-Copy-11"
+           mask="url(#mask-4)"
+           transform="matrix(0.75470958,0.65605903,-0.65605903,0.75470958,16.764951,-3.8666103)"
+           xlink:href="#path-3"
+           style="fill:#a9cc56;stroke:#9ebf50;stroke-width:2;stroke-linecap:square"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           id="Combined-Shape-Copy-13"
+           mask="url(#mask-6)"
+           transform="matrix(0.97029573,0.2419219,-0.2419219,0.97029573,3.0640837,-5.4818668)"
+           xlink:href="#path-5"
+           style="fill:#a9cc56;stroke:#9ebf50;stroke-width:2;stroke-linecap:square"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           id="Combined-Shape-Copy-14"
+           mask="url(#mask-8)"
+           transform="matrix(0.93358043,0.35836795,-0.35836795,0.93358043,8.4022189,-6.5982644)"
+           xlink:href="#path-7"
+           style="fill:#a9cc56;stroke:#9ebf50;stroke-width:2;stroke-linecap:square"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           id="Combined-Shape-Copy-12"
+           mask="url(#mask-10)"
+           transform="matrix(-0.25881905,0.96592583,-0.96592583,-0.25881905,21.202996,10.515833)"
+           xlink:href="#path-9"
+           style="fill:#a9cc56;stroke:#9ebf50;stroke-width:2;stroke-linecap:square"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
     </g>
+  </g>
 </svg>
