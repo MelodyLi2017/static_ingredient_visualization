@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+<script src = "function.js"></script>
 <style>
 body { font-family: 'Alegreya Sans', Calibri, sans-serif; }
 svg { border: solid #ccc 1px; }
@@ -196,11 +197,9 @@ rect {
 	}
 	var svg = d3.select('#graph');
   	var cuisine_types = ['North American', 'Western European', 'Northern European','Eastern European', 'Southern European', 'Latin American', 'Middle Eastern', 'African', 'South Asian', 'Southeast Asian', 'East Asian',];
-  	var x_scale = d3.scaleLinear().domain([0,.9]).range([0,180]);
+  	var x_scale = d3.scaleLinear().domain([0,90]).range([0,180]);
 	//creates axis
-	var x_axis = d3.axisTop(x_scale)
-	.ticks(7)
-	.tickFormat(d3.format(".0%"));
+	var x_axis = d3.axisTop(x_scale).ticks(7).tickFormat(d3.format(".0%"));
 	//import cuisines.csv
 	d3.text("cuisines.csv", function(error, data){
 		rawData = d3.csvParseRows(data, function(row) {
