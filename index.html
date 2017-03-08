@@ -197,7 +197,7 @@ rect {
 	}
 	var svg = d3.select('#graph');
   	var cuisine_types = ['North American', 'Western European', 'Northern European','Eastern European', 'Southern European', 'Latin American', 'Middle Eastern', 'African', 'South Asian', 'Southeast Asian', 'East Asian',];
-  	var x_scale = d3.scaleLinear().domain([0,90]).range([0,180]);
+  	var x_scale = d3.scaleLinear().domain([0,0.9]).range([0,180]);
 	//creates axis
 	var x_axis = d3.axisTop(x_scale).ticks(7).tickFormat(d3.format(".0%"));
 	//import cuisines.csv
