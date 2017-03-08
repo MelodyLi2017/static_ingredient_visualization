@@ -28,7 +28,6 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 		.attr("y", 45)
 		.attr("width", scale(90) +3)
 		.attr("height", ing_index.length * 50)
-		.style("fill-opacity", .15)
 		.attr("class", "background");
 		var counts = Object.values(sortedObj);
 		//console.log(counts);
