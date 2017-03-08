@@ -20,6 +20,7 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 			.text(i + 1);
 		}
 	}
+	var seenIngredients = new Array();
 	data.forEach(function(d, i){
 		var obj = {};
 		ing_index.forEach(function(ingredient){
@@ -44,7 +45,6 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 		.attr("height", ing_index.length * 50)
 		.attr("class", "background");
 		var counts = Object.values(sortedObj);
-		//console.log(counts);
 		var j = 0;
 		for (var ingredient in sortedObj) {
 			var width = scale(sortedObj[ingredient] / 100)
@@ -66,6 +66,18 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 			if (focus_group[ingredient] == ingredient){
 				d3.select("#"+ingredient+groupings_index+i+"rect").attr("class", ingredient);
 				d3.select("#"+ingredient+groupings_index+i).style("opacity", 1);
+			}
+			if (seenIngredients.indexOf(ingredient) === -1){
+				seenIngredients.push(ingredient);
+				d3.select(graph_number).append("svg:image")
+				.attr("xlink:href", "images/"+ingredient+".svg")
+				.attr("x", (100 * seenIngredients.length - 1) - 50)
+				.attr("y", 1048)
+				.attr("height", 35);
+			    d3.select(graph_number).append("text")
+				.attr("x", (100 * seenIngredients.length - 1) - 50)
+				.attr("y", 1030)
+				.text(ingredient.charAt(0).toUpperCase() + ingredient.replace(/_/g, " ").slice(1));
 			}
 		}
 	});
