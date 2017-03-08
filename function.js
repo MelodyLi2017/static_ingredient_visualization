@@ -3,7 +3,7 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 	var svg = d3.select(graph_number);
 	var svg_height = 200 + ing_index.length * 50;
 	svg.attr("height", svg_height);
-	var svg_width =  22 + 20 + scale(0.9) + cuisine_types.length*(10 + (scale(0.9)+3));
+	var svg_width =  22 + scale(0.9) + cuisine_types.length*(10 + (scale(0.9)+3));
  	d3.select(graph_number).attr("width", svg_width);
  	var svg2 = d3.select("#barplot"+groupings_index);
  	console.log(svg2);
