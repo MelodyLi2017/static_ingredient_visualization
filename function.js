@@ -1,7 +1,7 @@
 function create_graph(data, ing_index, focus_group, axis, scale, groupings_index){
 	var graph_number = '#graph' + groupings_index;
 	var svg = d3.select(graph_number);
-	var svg_height = 55+ ing_index.length * 50;
+	var svg_height = 200 + ing_index.length * 50;
 	svg.attr("height", svg_height);
 	var svg_width =  22 + 20 + scale(0.9) + cuisine_types.length*(10 + (scale(0.9)+3));
  	d3.select(graph_number).attr("width", svg_width);
@@ -36,12 +36,10 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 				obj[ingredient] = (d.ingredientsByPercentage[ingredient] !== undefined ? d.ingredientsByPercentage[ingredient] : 0);
 		});
 		var sortedObj = sortObjectValuesByDescendingOrder(obj);
-		//console.log(d.cuisineType);
-		//console.log(sortedObj[Object.keys(sortedObj)[0]]);
 		//creates axises and background grey rectangle for each cuisine type, axises are currently left aligned
 		//axises need to be updated to start in the center if we're still doing that
 		var x_coord = 22 + (i*(20 + scale(0.9)));
-		svg2.append("g").style("font-size", "8px").attr("transform", "translate(" + x_coord + ", 42)").call(axis);
+		svg2.append("g").style("font-size", 11).attr("transform", "translate(" + x_coord + ", 42)").call(axis);
 		svg2.append("text")
 		.attr("x", x_coord + (scale(.9) + 3)/2)
 		.attr("y", 15)
@@ -56,9 +54,10 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 		var counts = Object.values(sortedObj);
 		d3.select(graph_number)
 		.append("text")
-		.attr("x", x_coord)
+		.attr("x", x_coord + (scale(.9)+3)/2)
 		.attr("y", 1010)
-		.text("Out of " + data[i].totalNumberOfRecipes + " recipes");
+		.text("Out of " + data[i].totalNumberOfRecipes + " recipes")
+		.attr("text-anchor", "middle");
 		var j = 0;
 		for (var ingredient in sortedObj) {
 			var width = scale(sortedObj[ingredient] / 100)
