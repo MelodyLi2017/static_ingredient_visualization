@@ -8,8 +8,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 <script src = "function.js"></script>
 <style>
-body { font-family: 'Alegreya Sans', Calibri, sans-serif; }
-svg { border: solid #ccc 1px; }
+body {font-family: 'Alegreya Sans', Calibri, sans-serif;}
+p {padding-left: 15;}
+h1 {padding-left: 15}
+h2 {padding-left: 15;}
+text {}
+
 rect {
 	fill: #8E8B99;
 }
@@ -77,25 +81,36 @@ rect {
 </style>
 </head>
 <body>
+<h1>Top Five Ingredients From Eleven Different Cuisine Types Ranked From Most Commonly Used to Least Commonly Used </h1>
+<p>In a recent research paper, "Flavor Network and the Principle of Food Pairings", several researchers compiled a list of recipes from several online recipe websites. Using this list of recipes, we 
+calculted the five ingredients that appeared the most in each cuisine type. For example, in North American recipes, the top five ingredients were butter, eggs, wheat, onions, and milk. In Western Europe,
+the top five used ingredients were also butter, eggs, wheat, onions, and milk. This would yield a final set of five ingredients: butter, eggs, wheat, onions, and milk. However, once Northern European is 
+added, the set of top used ingredients increases to include cream (Northern Europeans fourth most used ingredient). This process was done for 11 total cuisine types and yielded a final set of 19 different 
+ingredients. The graphs below all show each cuisine type and the rankings of this set of 19 ingredients in each cuisine type. Furthermore, each graph highlights an interesting trend in the ingredient rankings
+across all cuisines. </p>
 
+<h2>Dairy</h2>
 <svg id = "graph0" width="3000" height="1700">
   <g id = 'barplot0'></g>
   <g id = 'icons0'></g>
 </svg>
 <br/>
 <br />
+<h2>Oils</h2>
 <svg id = "graph1" width="3000" height="1700">
   <g id = 'barplot1'></g>
   <g id = 'icons1'></g>
 </svg>
 <br/>
 <br />
+<h2>Spices</h2>
 <svg id = "graph2" width="3000" height="1700">
   <g id = 'barplot2'></g>
   <g id = 'icons2'></g>
 </svg>
 <br/>
 <br />
+<h2>Carbohydates</h2>
 <svg id = "graph3" width="3000" height="1700">
   <g id = 'barplot3'></g>
   <g id = 'icons3'></g>
@@ -200,7 +215,7 @@ rect {
   	var cuisine_types = ['North American', 'Western European', 'Northern European','Eastern European', 'Southern European', 'Latin American', 'Middle Eastern', 'African', 'South Asian', 'Southeast Asian', 'East Asian',];
   	var x_scale = d3.scaleLinear().domain([0,0.9]).range([0,180]);
 	//creates axis
-	var x_axis = d3.axisTop(x_scale).ticks(7).tickFormat(d3.format(".0%"));
+	var x_axis = d3.axisTop(x_scale).ticks(5).tickFormat(d3.format(".0%"));
 	//import cuisines.csv
 	d3.text("cuisines.csv", function(error, data){
 		rawData = d3.csvParseRows(data, function(row) {
@@ -241,9 +256,9 @@ rect {
 			});
 		});
 		//six total groupings
-		groupings = [{'olive_oil':'olive_oil', 'sesame_oil':'sesame_oil', 'butter':'butter', 'vegetable_oil':'vegetable_oil'}, {'onion':'onion', 'tomato':'tomato'},
+		groupings = [{'cream':'cream', 'butter':'butter', 'milk':'milk'}, {'olive_oil':'olive_oil', 'sesame_oil':'sesame_oil', 'butter':'butter', 'vegetable_oil':'vegetable_oil'},
 		      {'cumin':'cumin', 'garlic':'garlic', 'cayenne':'cayenne', 'soy_sauce':'soy_sauce', 'scallion':'scallion', 'turmeric':'turmeric'},
-		      {'egg':'egg', 'fish':'fish'}, {'corn':'corn', 'rice':'rice', 'wheat':'wheat'}, {'cream':'cream', 'butter':'butter', 'milk':'milk'}];
+		      {'corn':'corn', 'rice':'rice', 'wheat':'wheat'}];
 		groupings.forEach(function(d, i){
 			create_graph(cat, topIngredientsIndex, d, x_axis, x_scale, i);
 		});
