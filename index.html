@@ -6,28 +6,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-<script src = "function.js"></script>
 <style>
 body { font-family: 'Alegreya Sans', Calibri, sans-serif; }
 svg { border: solid #ccc 1px; }
 rect {
 	fill: #8E8B99;
 }
-.cuisineType {
-	align: middle;
-}
-
 .background {
-	fill: #D9D9D9;
+	fill: black;
 }
 .butter {
-	fill: #3E59B3;
+	fill: #5f73b3;
 }
 .milk{
-	fill:#3E59B3;
+	fill:#5f73b3;
 }
 .cream{
-	fill: #3E59B3;
+	fill: #5f73b3;
 }
 .egg {
 	fill: #fe2820;
@@ -51,16 +46,16 @@ rect {
 	fill: #feb24c;
 }
 .olive_oil {
-	fill: #668C31;
+	fill: #c96588;
 }
 .sesame_oil{
-	fill: #55047D;
+	fill: #550445;
 }
 .vegetable_oil{
-	fill: #F8F86F;
+	fill: #8b3d78;
 }
 .wheat {
-	fill: #E69719;
+	fill: #E2A84A;
 }
 .cumin{
 	fill: #ffffb2;
@@ -77,7 +72,6 @@ rect {
 .rice{
 	fill: #93241C;
 }
-
 </style>
 </head>
 <body>
@@ -200,13 +194,13 @@ rect {
 		// Return new object
 		return newObj;
 	}
-
-
 	var svg = d3.select('#graph');
   	var cuisine_types = ['North American', 'Western European', 'Northern European','Eastern European', 'Southern European', 'Latin American', 'Middle Eastern', 'African', 'South Asian', 'Southeast Asian', 'East Asian',];
-  	var x_scale = d3.scaleLinear().domain([0,90]).range([0,180]);
+  	var x_scale = d3.scaleLinear().domain([0,.9]).range([0,180]);
 	//creates axis
-	var x_axis = d3.axisTop(x_scale).ticks(7);
+	var x_axis = d3.axisTop(x_scale)
+	.ticks(7)
+	.tickFormat(d3.format(".0%"));
 	//import cuisines.csv
 	d3.text("cuisines.csv", function(error, data){
 		rawData = d3.csvParseRows(data, function(row) {
@@ -238,9 +232,7 @@ rect {
 		}
 		console.log(processedData);
 		console.log(topIngredientsIndex);
-
 		var cat = [];
-
 		cuisine_types.forEach(function(cuisine_type) {
 				processedData.forEach(function(dataSet) {
 					if (dataSet.cuisineType === cuisine_type.replace(/\s/g, "")) {
@@ -248,16 +240,14 @@ rect {
 					}
 			});
 		});
-
 		//six total groupings
-		groupings = [{'olive_oil':'olive_oil', 'sesame_oil':'sesame_oil', 'butter':'butter', 'vegetable_oil':'vegetable_oil'}, {'onion':'onion', 'tomato':'tomato'},
+		groupings = [{'olive_oil':'olive_oil', 'sesame_oil':'sesame_oil', 'butter':'butter', 'vegetable_oil':'vegetable_oil'}, {'onion':'onion', 'tomato':'tomato'}, 
 					{'cumin':'cumin', 'garlic':'garlic', 'cayenne':'cayenne', 'soy_sauce':'soy_sauce', 'scallion':'scallion', 'turmeric':'turmeric'},
 					{'egg':'egg', 'fish':'fish'}, {'corn':'corn', 'rice':'rice', 'wheat':'wheat'}, {'cream':'cream', 'butter':'butter', 'milk':'milk'}];
 		groupings.forEach(function(d, i){
 			create_graph(cat, topIngredientsIndex, d, x_axis, x_scale, i);
 		});
 	});
-
   // Add the bars to a column of the svg element.
  </script>
 
