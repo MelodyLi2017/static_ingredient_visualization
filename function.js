@@ -21,6 +21,15 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 		}
 	}
 	var seenIngredients = new Array();
+	d3.select(graph_number)
+	.append("rect")
+	.attr("x", 35)
+	.attr("y", 1030)
+	.attr("height", 75)
+	.attr("width", 1900)
+	.attr("fill", "#ADD8E6")
+	.attr("stroke", "#ADD8E6")
+	.attr("class", "legend");
 	data.forEach(function(d, i){
 		var obj = {};
 		ing_index.forEach(function(ingredient){
@@ -45,6 +54,11 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 		.attr("height", ing_index.length * 50)
 		.attr("class", "background");
 		var counts = Object.values(sortedObj);
+		d3.select(graph_number)
+		.append("text")
+		.attr("x", x_coord)
+		.attr("y", 1010)
+		.text("Out of " + data[i].totalNumberOfRecipes + " recipes");
 		var j = 0;
 		for (var ingredient in sortedObj) {
 			var width = scale(sortedObj[ingredient] / 100)
@@ -72,11 +86,11 @@ function create_graph(data, ing_index, focus_group, axis, scale, groupings_index
 				d3.select(graph_number).append("svg:image")
 				.attr("xlink:href", "images/"+ingredient+".svg")
 				.attr("x", (100 * seenIngredients.length - 1) - 50)
-				.attr("y", 1048)
+				.attr("y", 1065)
 				.attr("height", 35);
 			    d3.select(graph_number).append("text")
 				.attr("x", (100 * seenIngredients.length - 1) - 50)
-				.attr("y", 1030)
+				.attr("y", 1047)
 				.text(ingredient.charAt(0).toUpperCase() + ingredient.replace(/_/g, " ").slice(1));
 			}
 		}
