@@ -13,17 +13,18 @@ svg { border: solid #ccc 1px; }
 rect {
 	fill: #8E8B99;
 }
+
 .background {
-	fill: black;
+	fill: #D9D9D9;
 }
 .butter {
-	fill: #5f73b3;
+	fill: #3E59B3;
 }
 .milk{
-	fill:#5f73b3;
+	fill:#3E59B3;
 }
 .cream{
-	fill: #5f73b3;
+	fill: #3E59B3;
 }
 .egg {
 	fill: #fe2820;
@@ -41,25 +42,25 @@ rect {
 	fill: #FF708F;
 }
 .garlic {
-	fill: #fed976;
+	fill: #ffffb2;
 }
 .cayenne {
 	fill: #feb24c;
 }
 .olive_oil {
-	fill: #c96588;
+	fill: #668C31;
 }
 .sesame_oil{
-	fill: #550445;
+	fill: #55047D;
 }
 .vegetable_oil{
-	fill: #8b3d78;
+	fill: #F8F86F;
 }
 .wheat {
-	fill: #E2A84A;
+	fill: #E69719;
 }
 .cumin{
-	fill: #ffffb2;
+	fill: #fed976;
 }
 .soy_sauce{
 	fill: #fd8d3c;
@@ -240,9 +241,9 @@ rect {
 			});
 		});
 		//six total groupings
-		groupings = [{'olive_oil':'olive_oil', 'sesame_oil':'sesame_oil', 'butter':'butter', 'vegetable_oil':'vegetable_oil'}, {'onion':'onion', 'tomato':'tomato'}, 
-					{'cumin':'cumin', 'garlic':'garlic', 'cayenne':'cayenne', 'soy_sauce':'soy_sauce', 'scallion':'scallion', 'turmeric':'turmeric'},
-					{'egg':'egg', 'fish':'fish'}, {'corn':'corn', 'rice':'rice', 'wheat':'wheat'}, {'cream':'cream', 'butter':'butter', 'milk':'milk'}];
+		groupings = [{'olive_oil':'olive_oil', 'sesame_oil':'sesame_oil', 'butter':'butter', 'vegetable_oil':'vegetable_oil'}, {'onion':'onion', 'tomato':'tomato'},
+		      {'cumin':'cumin', 'garlic':'garlic', 'cayenne':'cayenne', 'soy_sauce':'soy_sauce', 'scallion':'scallion', 'turmeric':'turmeric'},
+		      {'egg':'egg', 'fish':'fish'}, {'corn':'corn', 'rice':'rice', 'wheat':'wheat'}, {'cream':'cream', 'butter':'butter', 'milk':'milk'}];
 		groupings.forEach(function(d, i){
 			create_graph(cat, topIngredientsIndex, d, x_axis, x_scale, i);
 		});
